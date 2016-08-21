@@ -8,13 +8,26 @@
         android:label="@string/titulo_Activity_login"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginActivity">
+        <meta-data
+            android:name="android.app.searchable"
+            android:resource="@xml/searchable" />
+
+        <activity android:name=".Actividades.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="android.app.searchable"
+            android:resource="@xml/searchable" />
+
+        <activity
+            android:name=".Actividades.AgendaActivity"
+            android:label="@string/title_activity_agenda"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

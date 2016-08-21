@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.a7m.endscom.isbot.LoginActivity">
+    tools:context=".Actividades.LoginActivity">
 
     <ScrollView
         android:layout_width="fill_parent"
@@ -20,19 +20,16 @@
             <EditText
                 android:id="@+id/edtAgente"
                 android:hint="@string/label_edt_login_agente"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"/>
+                style="@style/ClssEditText"/>
             <EditText
                 android:id="@+id/edtPass"
                 android:hint="@string/label_edt_login_pass"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" />
+                style="@style/ClssEditText" />
 
             <Button
                 android:id="@+id/btnOK"
                 android:text="@string/btn_login"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                style="@style/ClssEditText"
                 android:layout_gravity="center_horizontal" />
         </LinearLayout>
     </ScrollView>
