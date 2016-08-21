@@ -7,4 +7,6 @@
     <string name="search_hint">Buscar Cliente</string>
     <string name="app_label">Buscador</string>
     <string name="title_activity_agenda">AgendaActivity</string>
+    <string name="title_activity_carrito_pedido">CarritoPedidoActivity</string>
+    <string name="title_activity_lista_producto">LIstaProductoActivity</string>
 </resources>

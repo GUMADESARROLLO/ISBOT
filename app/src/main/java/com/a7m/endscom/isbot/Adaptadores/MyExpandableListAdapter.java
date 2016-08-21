@@ -1,6 +1,7 @@
 package com.a7m.endscom.isbot.Adaptadores;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.a7m.endscom.isbot.Actividades.AgendaActivity;
+import com.a7m.endscom.isbot.Actividades.CarritoPedidoActivity;
 import com.a7m.endscom.isbot.Clases.ChildRow;
 import com.a7m.endscom.isbot.Clases.ParentRow;
 import com.a7m.endscom.isbot.R;

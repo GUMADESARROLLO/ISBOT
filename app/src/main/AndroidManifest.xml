@@ -27,6 +27,14 @@
         <activity
             android:name=".Actividades.AgendaActivity"
             android:label="@string/title_activity_agenda"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Actividades.CarritoPedidoActivity"
+            android:label="@string/title_activity_carrito_pedido"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Actividades.LIstaProductoActivity"
+            android:label="@string/title_activity_lista_producto"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
