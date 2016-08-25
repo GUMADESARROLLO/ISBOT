@@ -43,7 +43,8 @@
         <activity
             android:name=".Actividades.CatalogoArticuloActivity"
             android:label="@string/title_activity_catalogo_articulo"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Actividades.ResumenActivity"></activity>
     </application>
 
 </manifest>

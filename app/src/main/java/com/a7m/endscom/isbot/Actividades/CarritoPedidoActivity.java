@@ -35,11 +35,15 @@ public class CarritoPedidoActivity extends AppCompatActivity {
         if (id == 16908332){
             finish();
         }
+        switch (item.getItemId()){
+            case R.id.action_pluss:
+                startActivity(new Intent(this,LIstaProductoActivity.class));
+                break;
+            case R.id.action_send:
+                startActivity(new Intent(this,ResumenActivity.class));
+                finish();
+                break;
 
-        if (item.getItemId()==R.id.action_pluss){
-
-            Intent viewProducto = new Intent(CarritoPedidoActivity.this,LIstaProductoActivity.class);
-            startActivity(viewProducto);
 
         }
         return super.onOptionsItemSelected(item);
