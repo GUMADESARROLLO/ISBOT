@@ -11,4 +11,10 @@
     <string name="title_activity_lista_producto">LIstaProductoActivity</string>
     <string name="title_activity_nuevo_cliente">NuevoClienteActivity</string>
     <string name="title_activity_catalogo_articulo">CatalogoArticuloActivity</string>
+    <string name="hint_nombre">Nombre</string>
+    <string name="hint_telefono">Telefono</string>
+    <string name="hint_dir">Direccion</string>
+    <string name="accion_cancelar">cancelar</string>
+    <string name="accion_aceptar">aceptar</string>
+    <string name="hint_cedu">Cedula</string>
 </resources>

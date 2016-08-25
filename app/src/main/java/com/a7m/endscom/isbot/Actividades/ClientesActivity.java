@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ExpandableListView;
 import android.widget.SearchView;
 import android.widget.Toast;
@@ -40,6 +41,14 @@ public class ClientesActivity extends AppCompatActivity implements SearchView.On
         if (getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+        myList = (ExpandableListView) findViewById(R.id.ExpPlan);
+
+        myList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(ClientesActivity.this, "OOK", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         setTitle("Lista de Clientes");
 
@@ -87,7 +96,7 @@ public class ClientesActivity extends AppCompatActivity implements SearchView.On
     }
     private void displayList(){
         CargarPLan();
-        myList = (ExpandableListView) findViewById(R.id.ExpPlan);
+
         listAdapter = new MyExpandableListAdapter(ClientesActivity.this,parentList);
         myList.setAdapter(listAdapter);
     }

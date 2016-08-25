@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="#c2c2c2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -11,5 +12,147 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Actividades.NuevoClienteActivity"
     tools:showIn="@layout/activity_nuevo_cliente">
+
+    <LinearLayout
+        android:id="@+id/area_nombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/img_nombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_assignment_ind_white_24dp" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/til_nombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp">
+
+            <EditText
+                android:id="@+id/campo_nombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/hint_nombre"
+                android:inputType="text"
+                android:singleLine="true" />
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/area_cedu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/area_dir"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/img_cedu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/img_dir"
+            android:layout_column="0"
+            android:layout_gravity="center_vertical"
+            android:layout_row="2"
+            android:src="@drawable/ic_call_split_white_24dp" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/til_cedu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp">
+
+            <EditText
+                android:id="@+id/campo_cedu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/hint_cedu"
+                android:inputType="textEmailAddress"
+                android:singleLine="true" />
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/area_dir"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/area_nombre"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/img_dir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/img_dir"
+            android:layout_column="0"
+            android:layout_gravity="center_vertical"
+            android:layout_row="2"
+            android:src="@drawable/ic_call_split_white_24dp" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/til_dir"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp">
+
+            <EditText
+                android:id="@+id/campo_Direccion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/hint_dir"
+                android:inputType="textEmailAddress"
+                android:singleLine="true" />
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/area_telefono"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/area_cedu"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/img_telefono"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_phone_white_24dp" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/til_telefono"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp">
+
+            <EditText
+                android:id="@+id/campo_telefono"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/hint_telefono"
+                android:inputType="phone" />
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/area_depa"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/area_telefono">
+        <TextView
+            android:gravity="center"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Aqui tiene que ir la lista de departamentos"/>
+    </LinearLayout>
+
+
 
 </RelativeLayout>
