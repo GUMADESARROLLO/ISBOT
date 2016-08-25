@@ -6,10 +6,16 @@
     <item
         android:id="@+id/action_search"
         android:orderInCategory="100"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_search_white_24dp"
         app:actionViewClass="android.widget.SearchView"
         app:showAsAction="ifRoom|collapseActionView"
         android:title="" />
+    <item
+        android:id="@+id/action_catalogo"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_library_books_white_24dp"
+        app:showAsAction="ifRoom|collapseActionView"
+        android:title="Catalogo de Producto" />
 
     <item
         android:id="@+id/action_settings"

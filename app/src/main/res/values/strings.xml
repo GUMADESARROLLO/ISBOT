@@ -9,4 +9,6 @@
     <string name="title_activity_agenda">AgendaActivity</string>
     <string name="title_activity_carrito_pedido">CarritoPedidoActivity</string>
     <string name="title_activity_lista_producto">LIstaProductoActivity</string>
+    <string name="title_activity_nuevo_cliente">NuevoClienteActivity</string>
+    <string name="title_activity_catalogo_articulo">CatalogoArticuloActivity</string>
 </resources>

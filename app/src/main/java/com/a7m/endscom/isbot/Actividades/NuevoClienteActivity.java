@@ -1,53 +1,46 @@
 package com.a7m.endscom.isbot.Actividades;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.a7m.endscom.isbot.R;
 
-public class CarritoPedidoActivity extends AppCompatActivity {
+public class NuevoClienteActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_carrito_pedido);
+        setContentView(R.layout.activity_nuevo_cliente);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        setTitle("NUEVO CLIENTE");
         if (getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
-        setTitle("CARRITO DE COMPRA");
-
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                /*Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();*/
+                finish();
+            }
+        });
     }
-
     public boolean onOptionsItemSelected(MenuItem item){
         int id = item.getItemId();
+
         if (id == 16908332){
             finish();
         }
 
-        if (item.getItemId()==R.id.action_pluss){
-
-            Intent viewProducto = new Intent(CarritoPedidoActivity.this,LIstaProductoActivity.class);
-            startActivity(viewProducto);
-
-        }
         return super.onOptionsItemSelected(item);
-    }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_carrito_compra,menu);
-        return true;
     }
 
 }

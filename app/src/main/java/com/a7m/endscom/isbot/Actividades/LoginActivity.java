@@ -16,7 +16,7 @@ public class LoginActivity extends AppCompatActivity {
         findViewById(R.id.btnOK).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent viewPlan = new Intent(LoginActivity.this,AgendaActivity.class);
+                Intent viewPlan = new Intent(LoginActivity.this,ClientesActivity.class);
                 startActivity(viewPlan);
                 finish();
             }

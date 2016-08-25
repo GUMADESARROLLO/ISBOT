@@ -10,7 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.a7m.endscom.isbot.Actividades.AgendaActivity;
+import com.a7m.endscom.isbot.Actividades.CatalogoArticuloActivity;
+import com.a7m.endscom.isbot.Actividades.ClientesActivity;
 import com.a7m.endscom.isbot.Actividades.CarritoPedidoActivity;
 import com.a7m.endscom.isbot.Clases.ChildRow;
 import com.a7m.endscom.isbot.Clases.ParentRow;
@@ -103,9 +104,8 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
         childText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(finalConvertView.getContext()
-                        , childText.getText()
-                        , Toast.LENGTH_SHORT).show();
+                finalConvertView.getContext().startActivity(new Intent(finalConvertView.getContext(), CarritoPedidoActivity.class));
+
             }
         });
 

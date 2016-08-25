@@ -8,6 +8,7 @@
         android:id="@+id/action_pluss"
         android:orderInCategory="300"
         app:showAsAction="ifRoom|collapseActionView"
+
         android:title="+" />
 
 </menu>

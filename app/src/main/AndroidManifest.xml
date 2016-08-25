@@ -5,7 +5,7 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/titulo_Activity_login"
+        android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <meta-data
@@ -25,7 +25,7 @@
             android:resource="@xml/searchable" />
 
         <activity
-            android:name=".Actividades.AgendaActivity"
+            android:name=".Actividades.ClientesActivity"
             android:label="@string/title_activity_agenda"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -35,6 +35,14 @@
         <activity
             android:name=".Actividades.LIstaProductoActivity"
             android:label="@string/title_activity_lista_producto"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Actividades.NuevoClienteActivity"
+            android:label="@string/title_activity_nuevo_cliente"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Actividades.CatalogoArticuloActivity"
+            android:label="@string/title_activity_catalogo_articulo"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

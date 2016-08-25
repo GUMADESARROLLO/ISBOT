@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -14,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.a7m.endscom.isbot.Adaptadores.MyExpandableListAdapter;
 import com.a7m.endscom.isbot.Clases.ChildRow;
@@ -22,7 +22,7 @@ import com.a7m.endscom.isbot.R;
 
 import java.util.ArrayList;
 
-public class AgendaActivity extends AppCompatActivity implements SearchView.OnQueryTextListener,SearchView.OnCloseListener{
+public class ClientesActivity extends AppCompatActivity implements SearchView.OnQueryTextListener,SearchView.OnCloseListener{
     private SearchManager searchManager;
     private android.widget.SearchView searchView;
     private MyExpandableListAdapter listAdapter;
@@ -33,7 +33,7 @@ public class AgendaActivity extends AppCompatActivity implements SearchView.OnQu
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_agenda);
+        setContentView(R.layout.activity_clientes);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -41,13 +41,13 @@ public class AgendaActivity extends AppCompatActivity implements SearchView.OnQu
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        setTitle("Plan de Trabajo");
+        setTitle("Lista de Clientes");
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent viewCarrito = new Intent(AgendaActivity.this,CarritoPedidoActivity.class);
+                Intent viewCarrito = new Intent(ClientesActivity.this,NuevoClienteActivity.class);
                 startActivity(viewCarrito);
             }
         });
@@ -64,44 +64,31 @@ public class AgendaActivity extends AppCompatActivity implements SearchView.OnQu
 
         childRows.add(new ChildRow("Cliente 1"));
         childRows.add(new ChildRow("Cliente 2"));
-        parentRow = new ParentRow("G1", childRows);
+
+        childRows.add(new ChildRow("Cliente 3"));
+        childRows.add(new ChildRow("Cliente 4"));
+
+        childRows.add(new ChildRow("Cliente 5"));
+        childRows.add(new ChildRow("Cliente 6"));
+
+        childRows.add(new ChildRow("Cliente 7"));
+        childRows.add(new ChildRow("Cliente 8"));
+
+        childRows.add(new ChildRow("Cliente 9"));
+        childRows.add(new ChildRow("Cliente 10"));
+
+        childRows.add(new ChildRow("Cliente 11"));
+        childRows.add(new ChildRow("Cliente 12"));
+
+        parentRow = new ParentRow("Base de Clientes", childRows);
         parentList.add(parentRow);
 
-        childRows = new ArrayList<ChildRow>();
-        childRows.add(new ChildRow("CLiente 3"));
-        childRows.add(new ChildRow("CLiente 4"));
-        parentRow = new ParentRow("G2", childRows);
-        parentList.add(parentRow);
-
-        childRows = new ArrayList<ChildRow>();
-        childRows.add(new ChildRow("CLiente 5"));
-        childRows.add(new ChildRow("CLiente 6"));
-        parentRow = new ParentRow("G3", childRows);
-        parentList.add(parentRow);
-
-        childRows = new ArrayList<ChildRow>();
-        childRows.add(new ChildRow("CLiente 7"));
-        childRows.add(new ChildRow("CLiente 8"));
-        parentRow = new ParentRow("G4", childRows);
-        parentList.add(parentRow);
-
-        childRows = new ArrayList<ChildRow>();
-        childRows.add(new ChildRow("CLiente 9"));
-        childRows.add(new ChildRow("CLiente 10"));
-        parentRow = new ParentRow("G4", childRows);
-        parentList.add(parentRow);
-
-        childRows = new ArrayList<ChildRow>();
-        childRows.add(new ChildRow("CLiente 11"));
-        childRows.add(new ChildRow("CLiente 12"));
-        parentRow = new ParentRow("G4", childRows);
-        parentList.add(parentRow);
 
     }
     private void displayList(){
         CargarPLan();
         myList = (ExpandableListView) findViewById(R.id.ExpPlan);
-        listAdapter = new MyExpandableListAdapter(AgendaActivity.this,parentList);
+        listAdapter = new MyExpandableListAdapter(ClientesActivity.this,parentList);
         myList.setAdapter(listAdapter);
     }
 
@@ -150,6 +137,11 @@ public class AgendaActivity extends AppCompatActivity implements SearchView.OnQu
 
         if (id == 16908332){
             finish();
+        }
+        switch (item.getItemId()){
+            case R.id.action_catalogo:
+                startActivity(new Intent(this, CatalogoArticuloActivity.class));
+                break;
         }
 
         return super.onOptionsItemSelected(item);
