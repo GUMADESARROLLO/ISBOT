@@ -3,6 +3,7 @@ package com.a7m.endscom.brain;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -39,7 +40,8 @@ public final class SQLiteHelper extends SQLiteOpenHelper {
     private boolean checkDataBase() {
         SQLiteDatabase checkDB;
         try {
-            checkDB = SQLiteDatabase.openDatabase(path.concat(File.separator).concat(DATABASE), null, flag);
+            Log.d("OKOKOKOKOKO",path.concat(DATABASE));
+            checkDB = SQLiteDatabase.openDatabase(path.concat(DATABASE), null, flag);
         } catch (Exception e) {
             checkDB = null;
         }
