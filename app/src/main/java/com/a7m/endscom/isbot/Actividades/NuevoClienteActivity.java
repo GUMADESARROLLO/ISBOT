@@ -11,7 +11,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.a7m.endscom.brain.Clientes;
@@ -24,6 +26,9 @@ import java.util.StringTokenizer;
 public class NuevoClienteActivity extends AppCompatActivity {
     Spinner spinner,spnnrMunicipio;
     String[] Departamentos = new String[0];
+    EditText cNombre,cDireccion,cCedula,cTelefono;
+    private String basedir;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,20 +39,33 @@ public class NuevoClienteActivity extends AppCompatActivity {
         if (getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+        basedir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + File.separator;
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 /*Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();*/
-                finish();
+
+                try {
+                    crearClientes().guardarDB(basedir, NuevoClienteActivity.this);
+                    finish();
+                } catch (Exception e) {
+                    Toast.makeText(NuevoClienteActivity.this, "Producto NO creado..", Toast.LENGTH_LONG).show();
+                }
             }
         });
+
+        cNombre = (EditText) findViewById(R.id.campo_nombre);
+        cDireccion = (EditText) findViewById(R.id.campo_Direccion);
+        cCedula = (EditText) findViewById(R.id.campo_cedu);
+        cTelefono = (EditText) findViewById(R.id.campo_telefono);
+
         spinner = (Spinner) findViewById(R.id.ListDepartamentos);
         spnnrMunicipio = (Spinner) findViewById(R.id.spinnerMunicipio);
 
         int i=0;
-        List<Clientes> cl = Clientes.getDepartamentos(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + File.separator, this);
+        List<Clientes> cl = Clientes.getDepartamentos(basedir, this);
         Departamentos = new String[cl.size()];
         for(Clientes obj : cl) {
             Departamentos[i] = obj.getNombre();
@@ -57,7 +75,7 @@ public class NuevoClienteActivity extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(NuevoClienteActivity.this, String.valueOf(i), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(NuevoClienteActivity.this, String.valueOf(i), Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -76,6 +94,14 @@ public class NuevoClienteActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    private Clientes crearClientes(){
+        Clientes obj = new Clientes();
+        obj.setNombre(cNombre.getText().toString());
+        obj.setDireccion(cDireccion.getText().toString());
+        obj.setCedula(cCedula.getText().toString());
+        obj.setTelefono(cTelefono.getText().toString());
+        return obj;
     }
 
 }

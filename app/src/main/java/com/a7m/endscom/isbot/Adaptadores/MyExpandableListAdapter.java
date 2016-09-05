@@ -133,15 +133,18 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
                     if (childRow.getText().toLowerCase().contains(query)) {
                         newList.add(childRow);
                     }
-                } // end for (com.example.user.searchviewexpandablelistview.ChildRow childRow: childList)
+                }
                 if (newList.size() > 0) {
                     ParentRow nParentRow = new ParentRow(parentRow.getName(), newList);
                     parentRowList.add(nParentRow);
                 }
-            } // end or (com.example.user.searchviewexpandablelistview.ParentRow parentRow : originalList)
-        } // end else
+            }
+        }
 
         notifyDataSetChanged();
+    }
+    public void Clear(){
+        originalList.clear();
     }
 }
 

@@ -4,6 +4,7 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -16,11 +17,14 @@ import android.widget.ExpandableListView;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import com.a7m.endscom.brain.ARTICULO;
+import com.a7m.endscom.brain.Clientes;
 import com.a7m.endscom.isbot.Adaptadores.MyExpandableListAdapter;
 import com.a7m.endscom.isbot.Clases.ChildRow;
 import com.a7m.endscom.isbot.Clases.ParentRow;
 import com.a7m.endscom.isbot.R;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class ClientesActivity extends AppCompatActivity implements SearchView.OnQueryTextListener,SearchView.OnCloseListener{
@@ -31,6 +35,8 @@ public class ClientesActivity extends AppCompatActivity implements SearchView.On
     private ArrayList<ParentRow> parentList = new ArrayList<ParentRow>();
     private ArrayList<ParentRow> showTheseParentList = new ArrayList<ParentRow>();
     private MenuItem searchItem;
+    ArrayList<ChildRow> childRows;
+    ParentRow parentRow;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,8 +62,9 @@ public class ClientesActivity extends AppCompatActivity implements SearchView.On
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent viewCarrito = new Intent(ClientesActivity.this,NuevoClienteActivity.class);
-                startActivity(viewCarrito);
+               startActivity(new Intent(ClientesActivity.this,NuevoClienteActivity.class));
+
+                
             }
         });
 
@@ -65,30 +72,14 @@ public class ClientesActivity extends AppCompatActivity implements SearchView.On
         parentList = new ArrayList<ParentRow>();
         showTheseParentList = new ArrayList<ParentRow>();
         displayList();
-       expandAll();
+        expandAll();
     }
     private void CargarPLan(){
-        ArrayList<ChildRow> childRows = new ArrayList<ChildRow>();
-        ParentRow parentRow = null;
-
-        childRows.add(new ChildRow("Cliente 1"));
-        childRows.add(new ChildRow("Cliente 2"));
-
-        childRows.add(new ChildRow("Cliente 3"));
-        childRows.add(new ChildRow("Cliente 4"));
-
-        childRows.add(new ChildRow("Cliente 5"));
-        childRows.add(new ChildRow("Cliente 6"));
-
-        childRows.add(new ChildRow("Cliente 7"));
-        childRows.add(new ChildRow("Cliente 8"));
-
-        childRows.add(new ChildRow("Cliente 9"));
-        childRows.add(new ChildRow("Cliente 10"));
-
-        childRows.add(new ChildRow("Cliente 11"));
-        childRows.add(new ChildRow("Cliente 12"));
-
+        childRows = new ArrayList<ChildRow>();
+        parentRow = null;
+        for(Clientes obj : Clientes.getCliente(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + File.separator, this)) {
+            childRows.add(new ChildRow(obj.getNombre()));
+        }
         parentRow = new ParentRow("Base de Clientes", childRows);
         parentList.add(parentRow);
 
@@ -96,7 +87,6 @@ public class ClientesActivity extends AppCompatActivity implements SearchView.On
     }
     private void displayList(){
         CargarPLan();
-
         listAdapter = new MyExpandableListAdapter(ClientesActivity.this,parentList);
         myList.setAdapter(listAdapter);
     }
@@ -156,4 +146,9 @@ public class ClientesActivity extends AppCompatActivity implements SearchView.On
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+
+    }
 }
