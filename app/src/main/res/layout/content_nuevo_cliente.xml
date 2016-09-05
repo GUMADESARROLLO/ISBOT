@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#c2c2c2"
+    android:background="@color/colorContraste"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -22,6 +22,7 @@
 
         <ImageView
             android:id="@+id/img_nombre"
+            android:tint="@color/colorPrimaryDark"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -52,6 +53,7 @@
 
         <ImageView
             android:id="@+id/img_cedu"
+            android:tint="@color/colorPrimaryDark"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/img_dir"
@@ -84,6 +86,7 @@
         android:orientation="horizontal">
 
         <ImageView
+            android:tint="@color/colorPrimaryDark"
             android:id="@+id/img_dir"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -119,6 +122,7 @@
 
         <ImageView
             android:id="@+id/img_telefono"
+            android:tint="@color/colorPrimaryDark"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -142,15 +146,47 @@
 
     <LinearLayout
         android:id="@+id/area_depa"
-        android:padding="10dp"
+        android:layout_marginTop="18dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/area_telefono">
-        <TextView
-            android:gravity="center"
+        <ImageView
+            android:id="@+id/img_depa"
+            android:tint="@color/colorPrimaryDark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_phone_white_24dp" />
+
+        <Spinner
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Aqui tiene que ir la lista de departamentos"/>
+            android:paddingLeft="30dp"
+            android:id="@+id/ListDepartamentos"
+
+            android:spinnerMode="dialog" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/area_municipio"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/area_depa">
+        <ImageView
+            android:id="@+id/img_muni"
+            android:tint="@color/colorPrimaryDark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_phone_white_24dp" />
+
+        <Spinner
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerMunicipio"
+            android:padding="30dp"
+            android:spinnerMode="dialog"/>
     </LinearLayout>
 
 

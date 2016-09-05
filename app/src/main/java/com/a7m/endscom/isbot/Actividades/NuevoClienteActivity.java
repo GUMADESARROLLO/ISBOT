@@ -1,18 +1,29 @@
 package com.a7m.endscom.isbot.Actividades;
 
+import android.database.Cursor;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.a7m.endscom.brain.Clientes;
 import com.a7m.endscom.isbot.R;
 
-public class NuevoClienteActivity extends AppCompatActivity {
+import java.io.File;
+import java.util.List;
+import java.util.StringTokenizer;
 
+public class NuevoClienteActivity extends AppCompatActivity {
+    Spinner spinner,spnnrMunicipio;
+    String[] Departamentos = new String[0];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +43,30 @@ public class NuevoClienteActivity extends AppCompatActivity {
                 finish();
             }
         });
+        spinner = (Spinner) findViewById(R.id.ListDepartamentos);
+        spnnrMunicipio = (Spinner) findViewById(R.id.spinnerMunicipio);
+
+        int i=0;
+        List<Clientes> cl = Clientes.getDepartamentos(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + File.separator, this);
+        Departamentos = new String[cl.size()];
+        for(Clientes obj : cl) {
+            Departamentos[i] = obj.getNombre();
+            i++;
+        }
+        spinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, Departamentos));
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(NuevoClienteActivity.this, String.valueOf(i), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        spnnrMunicipio.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, Departamentos));
+
     }
     public boolean onOptionsItemSelected(MenuItem item){
         int id = item.getItemId();

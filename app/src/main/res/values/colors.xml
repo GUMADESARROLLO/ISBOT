@@ -3,8 +3,6 @@
     <color name="colorPrimary">#7B1FA2</color>
     <color name="colorPrimaryDark">#9C27B0</color>
     <color name="colorAccent">#2196F3</color>
+
     <color name="colorContraste">#EDEDED</color>
-    <color name="ISB_blanco">#ffffff</color>
-    <color name="ISB_negro">#00000f</color>
-    <color name="ISB_gris_bajo">#c2c2c2</color>
 </resources>

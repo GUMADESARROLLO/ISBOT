@@ -28,7 +28,6 @@ public class LoginActivity extends AppCompatActivity {
         findViewById(R.id.btnOK).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("DONDEESTALABASE", Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + File.separator);
 
                 if (tmp.leerDB(
                         txtUsurio.getText().toString(),

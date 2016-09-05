@@ -45,20 +45,9 @@ public class Usuario {
             myDbHelper = new SQLiteHelper(basedir, context);
             myDataBase = myDbHelper.getReadableDatabase();
             Cursor cursor = myDataBase.rawQuery("select * from USUARIOS where CREDENCIAL='"+Usuario+"' and PASSWORD='"+PASSWORD+"' ", null);
-            Log.d("XQ","select * from USUARIOS where CREDENCIAL='"+Usuario+"' and PASSWORD='"+PASSWORD+"' ");
             if(cursor.getCount() > 0) {
                 Correcto = true;
                 cursor.moveToFirst();
-                while(!cursor.isAfterLast()) {
-                   /* Usuario tmp = new Usuario();
-                    tmp.setCodigo(cursor.getInt(cursor.getColumnIndex("codigo")));
-                    tmp.setNombre(cursor.getString(cursor.getColumnIndex("nombre")));
-                    tmp.setPrecio(cursor.getFloat(cursor.getColumnIndex("precio")));
-                    tmp.setCategoria(cursor.getInt(cursor.getColumnIndex("categoria")) == 1);
-                    tmp.setExento(cursor.getInt(cursor.getColumnIndex("codigo")) == 1);
-                    lista.add(tmp);*/
-                    cursor.moveToNext();
-                }
             }
         } catch (Exception e) {
             e.printStackTrace();

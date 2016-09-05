@@ -12,19 +12,48 @@
 
     <ScrollView
         android:layout_width="fill_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
+        <android.support.v7.widget.CardView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/cv"
+            >
+
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
-            <EditText
-                android:id="@+id/edtAgente"
-                android:hint="@string/label_edt_login_agente"
-                style="@style/ClssEditText"/>
-            <EditText
-                android:id="@+id/edtPass"
-                android:hint="@string/label_edt_login_pass"
-                style="@style/ClssEditText" />
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_launcher"/>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/edtAgente"
+                    android:hint="@string/label_edt_login_agente"
+                    android:ems="10"
+                    android:text="mespinoza"
+                    style="@style/ClssEditText"/>
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/edtPass"
+                    android:hint="@string/label_edt_login_pass"
+                    android:ems="10"
+                    android:inputType="textPassword"
+                    android:text="123456"
+                    style="@style/ClssEditText"/>
+            </android.support.design.widget.TextInputLayout>
+
 
             <Button
                 android:id="@+id/btnOK"
@@ -32,5 +61,6 @@
                 style="@style/ClssEditText"
                 android:layout_gravity="center_horizontal" />
         </LinearLayout>
+        </android.support.v7.widget.CardView>
     </ScrollView>
 </LinearLayout>

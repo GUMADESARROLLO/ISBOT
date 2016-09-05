@@ -7,8 +7,8 @@
 
     <TextView
         android:text="Titulo de prueba"
-        android:textColor="@color/ISB_negro"
-        android:background="@color/ISB_gris_bajo"
+        android:textColor="@color/colorContraste"
+        android:background="@color/colorPrimaryDark"
         android:id="@+id/parent_text_PlantTrabajo"
         android:paddingLeft="35sp"
         android:padding="5dp"
