@@ -10,34 +10,25 @@ import android.widget.Toast;
  * Created by marangelo.php on 31/08/2016.
  */
 public class Usuario {
-    private String nombre;
-    private String Contrasenna;
+    private static  String nombre;
 
     public Usuario() {
         super();
     }
 
-    public Usuario(String nombre, String contrasenna) {
+    public Usuario(String nombre) {
         this.nombre = nombre;
-        Contrasenna = contrasenna;
     }
 
-    public String getNombre() {
+    public static String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public static void setNombre(String nombre) {
+        Usuario.nombre = nombre;
     }
 
-    public String getContrasenna() {
-        return Contrasenna;
-    }
-
-    public void setContrasenna(String contrasenna) {
-        Contrasenna = contrasenna;
-    }
-    public static boolean leerDB(String Usuario, String PASSWORD,String basedir, Context context){
+    public static boolean leerDB(String Usuario, String PASSWORD, String basedir, Context context){
         boolean Correcto=false;
         SQLiteDatabase myDataBase = null;
         SQLiteHelper myDbHelper = null;

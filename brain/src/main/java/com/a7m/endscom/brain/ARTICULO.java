@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by A7M on 04/09/2016.
  */
-public class ARTICULO {
+public class ARTICULO extends ArrayList<Integer> {
     private String Nombre,Precio,Descripcion;
     private int IdArticulo;
 

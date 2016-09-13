@@ -15,12 +15,13 @@ import com.a7m.endscom.isbot.R;
 import java.io.File;
 
 public class LoginActivity extends AppCompatActivity {
-
+    Usuario tmp;
+    Usuario obj;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        final Usuario tmp = new Usuario();
+        tmp = new Usuario();
 
         final TextView txtUsurio = (TextView) findViewById(R.id.edtAgente);
         final TextView txtPass = (TextView) findViewById(R.id.edtPass);
@@ -28,13 +29,13 @@ public class LoginActivity extends AppCompatActivity {
         findViewById(R.id.btnOK).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 if (tmp.leerDB(
                         txtUsurio.getText().toString(),
                         txtPass.getText().toString(),
                         Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + File.separator,
                         LoginActivity.this)){
                         startActivity(new Intent(LoginActivity.this,ClientesActivity.class));
+                        obj.setNombre(txtUsurio.getText().toString());
                         finish();
                 }else{
                     Toast.makeText(LoginActivity.this, "El Usuario no existe", Toast.LENGTH_SHORT).show();

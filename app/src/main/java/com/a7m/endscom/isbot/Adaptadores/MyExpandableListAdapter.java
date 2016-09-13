@@ -89,7 +89,7 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-        ChildRow childRow = (ChildRow) getChild(groupPosition, childPosition);
+        final ChildRow childRow = (ChildRow) getChild(groupPosition, childPosition);
         if (convertView == null) {
             LayoutInflater layoutInflater = (LayoutInflater)
                     context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
@@ -104,8 +104,9 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
         childText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finalConvertView.getContext().startActivity(new Intent(finalConvertView.getContext(), CarritoPedidoActivity.class));
-
+                Intent ints = new Intent(finalConvertView.getContext(), CarritoPedidoActivity.class);
+                ints.putExtra("NombreCliente",childRow.getText().trim());
+                finalConvertView.getContext().startActivity(ints);
             }
         });
 

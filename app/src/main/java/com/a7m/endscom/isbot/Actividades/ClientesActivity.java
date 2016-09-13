@@ -56,14 +56,13 @@ public class ClientesActivity extends AppCompatActivity implements SearchView.On
             }
         });
 
-        setTitle("Lista de Clientes");
+        setTitle("CLIENTES");
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                startActivity(new Intent(ClientesActivity.this,NuevoClienteActivity.class));
-
                 
             }
         });
