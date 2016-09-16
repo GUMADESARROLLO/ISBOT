@@ -20,8 +20,9 @@
 
     </LinearLayout>
     <LinearLayout
+        android:background="@color/cardview_light_background"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
         <TextView
             android:id="@+id/Item_cant"
             android:layout_height="fill_parent"
@@ -63,6 +64,5 @@
             android:text="Valor"
 
             />
-
     </LinearLayout>
 </LinearLayout>

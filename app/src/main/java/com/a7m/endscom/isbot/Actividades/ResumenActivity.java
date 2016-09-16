@@ -30,7 +30,8 @@ public class ResumenActivity extends AppCompatActivity {
         Intent ints = getIntent();
         listView = (ListView) findViewById(R.id.ListView1);
         List<Map<String, Object>> list = (List<Map<String, Object>>) ints.getSerializableExtra("LIST");
-        listView.setAdapter(new SimpleAdapter(this, list,R.layout.list_item_resumen, new String[] {"ITEMNAME", "ITEMPRECIO" }, new int[] { R.id.tvListItemName,R.id.tvListItemPrecio }));
+        listView.setAdapter(new SimpleAdapter(this, list,R.layout.list_item_resumen,
+                new String[] {"ITEMNAME", "ITEMCANTI","ITEMPRECIO","ITEMVALOR" }, new int[] { R.id.tvListItemName,R.id.Item_cant,R.id.tvListItemPrecio,R.id.Item_valor }));
         lblNombreClliente = (TextView) findViewById(R.id.NombreCliente);
         lblNombreVendedor = (TextView) findViewById(R.id.NombreVendedor);
         lblNombreVendedor.setText(new Usuario().getNombre());

@@ -104,12 +104,11 @@ public class CarritoPedidoActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
     public void Refresh(){
-        listView.setAdapter(
-                new SimpleAdapter(
+        listView.setAdapter(                new SimpleAdapter(
                         this,
                         list,
-                        R.layout.list_item_carrito, new String[] {"ITEMNAME", "ITEMPRECIO" },
-                        new int[] {R.id.tvListItemName,R.id.tvListItemPrecio }));
+                        R.layout.list_item_carrito, new String[] {"ITEMNAME", "ITEMCANTI","ITEMPRECIO","ITEMVALOR" },
+                        new int[] {R.id.tvListItemName,R.id.Item_cant,R.id.tvListItemPrecio,R.id.Item_valor }));
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -117,14 +116,16 @@ public class CarritoPedidoActivity extends AppCompatActivity {
         return true;
     }
 
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode==0 && resultCode==RESULT_OK){
             Map<String, Object> map = new HashMap<String, Object>();
             map.put("ITEMNAME", data.getStringArrayListExtra("myItem").get(0));
-            map.put("ITEMCANTI", data.getStringArrayListExtra("myItem").get(2));
+            map.put("ITEMCANTI",  data.getStringArrayListExtra("myItem").get(2));
             map.put("ITEMPRECIO", data.getStringArrayListExtra("myItem").get(1));
+            map.put("ITEMVALOR", Float.parseFloat(data.getStringArrayListExtra("myItem").get(1)) * Float.parseFloat(data.getStringArrayListExtra("myItem").get(2)));
             list.add(map);
             Refresh();
         }
