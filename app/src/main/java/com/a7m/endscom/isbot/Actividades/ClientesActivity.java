@@ -1,7 +1,9 @@
 package com.a7m.endscom.isbot.Actividades;
 
+import android.app.AlertDialog;
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
@@ -77,7 +79,7 @@ public class ClientesActivity extends AppCompatActivity implements SearchView.On
         childRows = new ArrayList<ChildRow>();
         parentRow = null;
         for(Clientes obj : Clientes.getCliente(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + File.separator, this)) {
-            childRows.add(new ChildRow(obj.getNombre()));
+            childRows.add(new ChildRow(obj.getNombre(),obj.getDireccion()));
         }
         parentRow = new ParentRow("Base de Clientes", childRows);
         parentList.add(parentRow);
@@ -134,7 +136,19 @@ public class ClientesActivity extends AppCompatActivity implements SearchView.On
         int id = item.getItemId();
 
         if (id == 16908332){
-            finish();
+            AlertDialog.Builder builder = new AlertDialog.Builder(ClientesActivity.this);
+            builder.setMessage("¿Desea salir de la App por completo?")
+                    .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            finish();
+                        }
+                    }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+
+                        }
+                    }).create().show();
+
+
         }
         switch (item.getItemId()){
             case R.id.action_catalogo:

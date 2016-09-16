@@ -1,5 +1,7 @@
 package com.a7m.endscom.isbot.Actividades;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
@@ -47,9 +49,19 @@ public class CarritoPedidoActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.listViewSettingConnect);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                list.remove(i);
-                Refresh();
+            public void onItemClick(AdapterView<?> adapterView, View view, final int i, long l) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(CarritoPedidoActivity.this);
+                builder.setMessage("¿Desea Eliminar el Registro?")
+                        .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                list.remove(i);
+                                Refresh();
+                            }
+                        }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                    }
+                }).create().show();
             }
         });
     }
@@ -65,11 +77,22 @@ public class CarritoPedidoActivity extends AppCompatActivity {
                 break;
             case R.id.action_send:
                 if (list.size()!=0){
-                    Intent send = new Intent(this,ResumenActivity.class);
-                    send.putExtra("LIST", (Serializable) list);
-                    send.putExtra("NombreCliente",getIntent().getStringExtra("NombreCliente"));
-                    startActivity(send);
-                    finish();
+                    AlertDialog.Builder builder = new AlertDialog.Builder(CarritoPedidoActivity.this);
+                    builder.setMessage("¿Confirma la transaccion?")
+                            .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    Intent send = new Intent(CarritoPedidoActivity.this,ResumenActivity.class);
+                                    send.putExtra("LIST", (Serializable) list);
+                                    send.putExtra("NombreCliente",getIntent().getStringExtra("NombreCliente"));
+                                    startActivity(send);
+                                    finish();
+                                }
+                            }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+
+                        }
+                    }).create().show();
+
                 }else{
                     Toast.makeText(CarritoPedidoActivity.this, "VACIO", Toast.LENGTH_SHORT).show();
                 }
@@ -85,8 +108,8 @@ public class CarritoPedidoActivity extends AppCompatActivity {
                 new SimpleAdapter(
                         this,
                         list,
-                        R.layout.list_item_articulo, new String[] { "ICON","ITEMNAME", "ITEMPRECIO" },
-                        new int[] {R.id.btListItemIcon, R.id.tvListItemName,R.id.tvListItemPrecio }));
+                        R.layout.list_item_carrito, new String[] {"ITEMNAME", "ITEMPRECIO" },
+                        new int[] {R.id.tvListItemName,R.id.tvListItemPrecio }));
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -99,8 +122,8 @@ public class CarritoPedidoActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode==0 && resultCode==RESULT_OK){
             Map<String, Object> map = new HashMap<String, Object>();
-            map.put("ICON", android.R.drawable.stat_sys_data_bluetooth);
             map.put("ITEMNAME", data.getStringArrayListExtra("myItem").get(0));
+            map.put("ITEMCANTI", data.getStringArrayListExtra("myItem").get(2));
             map.put("ITEMPRECIO", data.getStringArrayListExtra("myItem").get(1));
             list.add(map);
             Refresh();

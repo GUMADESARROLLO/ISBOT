@@ -98,7 +98,9 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
 
 
         final TextView childText = (TextView) convertView.findViewById(R.id.child_text_planTrabajo  );
+        final TextView childTextDireccion = (TextView) convertView.findViewById(R.id.child_cliente_direccion  );
         childText.setText(childRow.getText().trim());
+        childTextDireccion.setText(childRow.getDirec().trim());
 
         final View finalConvertView = convertView;
         childText.setOnClickListener(new View.OnClickListener() {

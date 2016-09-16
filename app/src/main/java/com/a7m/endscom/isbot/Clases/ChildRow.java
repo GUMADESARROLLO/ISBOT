@@ -6,14 +6,20 @@ package com.a7m.endscom.isbot.Clases;
 public class ChildRow {
 
 
-    private String text;
+    private String text,Direc;
 
-    public ChildRow( String text) {
-
+    public ChildRow(String text, String direc) {
         this.text = text;
+        Direc = direc;
     }
 
+    public String getDirec() {
+        return Direc;
+    }
 
+    public void setDirec(String direc) {
+        Direc = direc;
+    }
 
     public String getText() {
         return text;
@@ -22,5 +28,4 @@ public class ChildRow {
     public void setText(String text) {
         this.text = text;
     }
-
 }

@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 public class ResumenActivity extends AppCompatActivity {
-    TextView lblNombreClliente,lblNombreVendedor;
+    TextView lblNombreClliente,lblNombreVendedor,countArti;
     private static ListView listView;
 
     @Override
@@ -30,11 +30,14 @@ public class ResumenActivity extends AppCompatActivity {
         Intent ints = getIntent();
         listView = (ListView) findViewById(R.id.ListView1);
         List<Map<String, Object>> list = (List<Map<String, Object>>) ints.getSerializableExtra("LIST");
-        listView.setAdapter(new SimpleAdapter(this, list,R.layout.list_item_articulo, new String[] { "ICON","ITEMNAME", "ITEMPRECIO" }, new int[] {R.id.btListItemIcon, R.id.tvListItemName,R.id.tvListItemPrecio }));
+        listView.setAdapter(new SimpleAdapter(this, list,R.layout.list_item_resumen, new String[] {"ITEMNAME", "ITEMPRECIO" }, new int[] { R.id.tvListItemName,R.id.tvListItemPrecio }));
         lblNombreClliente = (TextView) findViewById(R.id.NombreCliente);
         lblNombreVendedor = (TextView) findViewById(R.id.NombreVendedor);
         lblNombreVendedor.setText(new Usuario().getNombre());
         lblNombreClliente.setText(ints.getStringExtra("NombreCliente"));
+
+        countArti = (TextView) findViewById(R.id.txtCountArti);
+        countArti.setText(listView.getCount() +" Articulo");
     }
 
     public boolean onOptionsItemSelected(MenuItem item){

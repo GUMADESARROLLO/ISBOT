@@ -4,24 +4,12 @@
     android:layout_height="wrap_content"
     android:padding="5dp" >
 
-    <ImageView
-        android:id="@+id/btListItemIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/tvListItemPrecio"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:clickable="false"
-        android:contentDescription=""
-        android:scaleType="centerInside"
-        android:src="@android:drawable/stat_sys_data_bluetooth" />
 
     <TextView
         android:id="@+id/tvListItemName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/btListItemIcon"
         android:text="ooooooooooooooooooooooooo"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textIsSelectable="false" />
@@ -31,7 +19,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvListItemName"
-        android:layout_toRightOf="@+id/btListItemIcon"
         android:text="ooooooooooooooooooooooooo" />
 
 </RelativeLayout>
