@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.BaseExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.SearchView;
 import android.widget.Toast;
@@ -64,30 +65,34 @@ public class ClientesActivity extends AppCompatActivity implements SearchView.On
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               startActivity(new Intent(ClientesActivity.this,NuevoClienteActivity.class));
-                
+
+               startActivityForResult(new Intent(ClientesActivity.this,NuevoClienteActivity.class),0);
+
+
             }
         });
 
         searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         parentList = new ArrayList<ParentRow>();
         showTheseParentList = new ArrayList<ParentRow>();
+        CargarPLan();
+        parentRow = null;
+        parentRow = new ParentRow("Base de Clientes", childRows);
+        parentList.add(parentRow);
         displayList();
         expandAll();
     }
     private void CargarPLan(){
         childRows = new ArrayList<ChildRow>();
-        parentRow = null;
+
         for(Clientes obj : Clientes.getCliente(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + File.separator, this)) {
             childRows.add(new ChildRow(obj.getNombre(),obj.getDireccion()));
         }
-        parentRow = new ParentRow("Base de Clientes", childRows);
-        parentList.add(parentRow);
+
 
 
     }
     private void displayList(){
-        CargarPLan();
         listAdapter = new MyExpandableListAdapter(ClientesActivity.this,parentList);
         myList.setAdapter(listAdapter);
     }
@@ -160,8 +165,11 @@ public class ClientesActivity extends AppCompatActivity implements SearchView.On
     }
 
     @Override
-    protected void onRestart() {
-        super.onRestart();
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode==0 && resultCode==RESULT_OK){
+            listAdapter.Clear();
+        }
 
     }
 }

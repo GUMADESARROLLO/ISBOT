@@ -69,7 +69,7 @@
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Copyright © 2016, UNIMARK S.A."/>
+            android:text="Copyright © 2016, EL BUEN AGUACATE S.A"/>
         <TextView
             android:gravity="center"
             android:layout_width="match_parent"

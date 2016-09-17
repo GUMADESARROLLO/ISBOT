@@ -147,7 +147,8 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
         notifyDataSetChanged();
     }
     public void Clear(){
-        originalList.clear();
+
+
     }
 }
 

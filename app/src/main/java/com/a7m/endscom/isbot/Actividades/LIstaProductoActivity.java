@@ -33,6 +33,7 @@ public class LIstaProductoActivity extends AppCompatActivity {
     private static ListView listView;
     EditText Inputcant;
     List<Map<String, Object>> list;
+    Float vLinea,SubTotalLinea,TotalFinalLinea;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,9 +69,16 @@ public class LIstaProductoActivity extends AppCompatActivity {
                         .setPositiveButton("OK",
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog,int id) {
+                                        vLinea = Float.parseFloat(list.get(i).get("ITEMPRECIO").toString()) * Float.parseFloat(Inputcant.getText().toString());
+                                        SubTotalLinea = Float.parseFloat(String.valueOf(vLinea * 0.15));
+                                        TotalFinalLinea = vLinea + SubTotalLinea;
+
                                         strings.add( list.get(i).get( "ITEMNAME").toString());
-                                        strings.add( list.get(i).get("ITEMPRECIO").toString());
+                                        strings.add(list.get(i).get("ITEMPRECIO").toString() );
                                         strings.add( Inputcant.getText().toString());
+                                        strings.add(vLinea.toString());
+                                        strings.add(SubTotalLinea.toString());
+                                        strings.add(TotalFinalLinea.toString());
                                         getIntent().putStringArrayListExtra("myItem",strings);
                                         setResult(RESULT_OK,getIntent());
                                         finish();

@@ -49,6 +49,7 @@ public class NuevoClienteActivity extends AppCompatActivity {
 
                 try {
                     crearClientes().guardarDB(basedir, NuevoClienteActivity.this);
+                    setResult(RESULT_OK,getIntent());
                     finish();
                 } catch (Exception e) {
                     Toast.makeText(NuevoClienteActivity.this, "Producto NO creado..", Toast.LENGTH_LONG).show();

@@ -32,7 +32,7 @@ import java.util.Map;
 
 public class CarritoPedidoActivity extends AppCompatActivity {
     private static ListView listView;
-    TextView txtNameCliente;
+    TextView txtNameCliente,SubTotal,ivaTotal,Total;
     List<Map<String, Object>> list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +44,11 @@ public class CarritoPedidoActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
         txtNameCliente = (TextView) findViewById(R.id.clsSale);
+
+        SubTotal = (TextView) findViewById(R.id.SubTotal);
+        ivaTotal = (TextView) findViewById(R.id.ivaTotal);
+        Total = (TextView) findViewById(R.id.Total);
+
         txtNameCliente.setText(getIntent().getStringExtra("NombreCliente"));
         list = new ArrayList<Map<String, Object>>();
         listView = (ListView) findViewById(R.id.listViewSettingConnect);
@@ -104,11 +109,23 @@ public class CarritoPedidoActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
     public void Refresh(){
-        listView.setAdapter(                new SimpleAdapter(
+        float vLine = 0,subValor=0,vFinal=0;
+        listView.setAdapter(
+                new SimpleAdapter(
                         this,
                         list,
                         R.layout.list_item_carrito, new String[] {"ITEMNAME", "ITEMCANTI","ITEMPRECIO","ITEMVALOR" },
                         new int[] {R.id.tvListItemName,R.id.Item_cant,R.id.tvListItemPrecio,R.id.Item_valor }));
+
+
+        for (Map<String, Object> obj : list){
+            vLine     += Float.parseFloat(obj.get("ITEMVALOR").toString());
+            subValor  += Float.parseFloat(obj.get("ITEMSUBTOTAL").toString());
+            vFinal    += Float.parseFloat(obj.get("ITEMVALORTOTAL").toString());
+        }
+        SubTotal.setText("SubTotal C$ " + String.valueOf(vLine));
+        ivaTotal.setText("IVA C$ " + String.valueOf(subValor));
+        Total.setText("TOTAL C$ "+ String.valueOf(vFinal));
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -123,9 +140,12 @@ public class CarritoPedidoActivity extends AppCompatActivity {
         if (requestCode==0 && resultCode==RESULT_OK){
             Map<String, Object> map = new HashMap<String, Object>();
             map.put("ITEMNAME", data.getStringArrayListExtra("myItem").get(0));
-            map.put("ITEMCANTI",  data.getStringArrayListExtra("myItem").get(2));
             map.put("ITEMPRECIO", data.getStringArrayListExtra("myItem").get(1));
-            map.put("ITEMVALOR", Float.parseFloat(data.getStringArrayListExtra("myItem").get(1)) * Float.parseFloat(data.getStringArrayListExtra("myItem").get(2)));
+            map.put("ITEMCANTI",  data.getStringArrayListExtra("myItem").get(2));
+
+            map.put("ITEMVALOR", data.getStringArrayListExtra("myItem").get(3));
+            map.put("ITEMSUBTOTAL", data.getStringArrayListExtra("myItem").get(4));
+            map.put("ITEMVALORTOTAL", data.getStringArrayListExtra("myItem").get(5));
             list.add(map);
             Refresh();
         }
